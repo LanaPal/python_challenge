@@ -32,16 +32,17 @@ with open(budget_data_csvpath) as fin_data:
         net_change = int(row[1]) - prev_net
         prev_net = int(row[1])
         net_change_list += [net_change] 
-        change_per_month += [row[0]] #eye
+        change_per_month += [row[0]]
 
+        #calculate increase
         if net_change > great_increase[1]:
-            great_increase[0] = row[0] #increase month in array
-            great_increase[1] = net_change #increase by one
+            great_increase[0] = row[0]
+            great_increase[1] = net_change
 
         #calculate decrease
         if net_change < great_decrease[1]:
-            great_decrease[0] = row[0] #increase month in array
-            great_decrease[1] = net_change #increase by one
+            great_decrease[0] = row[0]
+            great_decrease[1] = net_change
 #average
 net_month_change_average = sum(net_change_list) / len(net_change_list)
 
